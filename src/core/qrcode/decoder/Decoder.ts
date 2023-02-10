@@ -44,9 +44,9 @@ export default class Decoder {
     this.rsDecoder = new ReedSolomonDecoder(GenericGF.QR_CODE_FIELD_256);
   }
 
-  // public decode(image: boolean[][]): DecoderResult /*throws ChecksumException, FormatException*/ {
-  //   return decode(image, null)
-  // }
+   //public decode(image: boolean[][]): DecoderResult /*throws ChecksumException, FormatException*/ {
+   //  return decode(image, null)
+   //}
 
   /**
    * <p>Convenience method that can decode a QR Code represented as a 2D array of booleans.
@@ -62,9 +62,9 @@ export default class Decoder {
     return this.decodeBitMatrix(BitMatrix.parseFromBooleanArray(image), hints);
   }
 
-  // public decodeBitMatrix(bits: BitMatrix): DecoderResult /*throws ChecksumException, FormatException*/ {
-  //   return decode(bits, null)
-  // }
+   //public decodeBitMatrix(bits: BitMatrix): DecoderResult /*throws ChecksumException, FormatException*/ {
+   //  return decode(bits, null)
+   //}
 
   /**
    * <p>Decodes a QR Code represented as a {@link BitMatrix}. A 1 or "true" is taken to mean a black module.</p>

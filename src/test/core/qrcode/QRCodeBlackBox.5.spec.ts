@@ -44,4 +44,5 @@ describe('QRCodeBlackBox.5', () => {
         const test = new QRCodeBlackBox5Spec();
         await test.testBlackBox();
     });
+    
 });

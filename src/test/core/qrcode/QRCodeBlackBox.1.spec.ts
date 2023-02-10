@@ -39,5 +39,5 @@ describe('QRCodeBlackBox.1', () => {
     it('testBlackBox', async () => {
         const test = new QRCodeBlackBox1Spec();
         await test.testBlackBox();
-    });
+    })
 });
