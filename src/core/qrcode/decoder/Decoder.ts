@@ -166,20 +166,25 @@ export default class Decoder {
    * @throws ChecksumException if error correction fails
    */
   private correctErrors(codewordBytes: Uint8Array, numDataCodewords: number /*int*/): void /*throws ChecksumException*/ {
-    // const numCodewords = codewordBytes.length;
+     const numCodewords = codewordBytes.length;
     // First read into an array of ints
-    const codewordsInts = new Int32Array(codewordBytes);
+    //const codewordsInts = new Int32Array(codewordBytes);
     // TYPESCRIPTPORT: not realy necessary to transform to ints? could redesign everything to work with unsigned bytes?
-    // const codewordsInts = new Int32Array(numCodewords)
-    // for (let i = 0; i < numCodewords; i++) {
-    //   codewordsInts[i] = codewordBytes[i] & 0xFF
-    // }
-    try {
-      this.rsDecoder.decode(codewordsInts, codewordBytes.length - numDataCodewords);
-    } catch (ignored/*: ReedSolomonException*/) {
-      throw new ChecksumException();
-    }
-    // Copy back into array of bytes -- only need to worry about the bytes that were data
+     const codewordsInts = new Int32Array(numCodewords)
+     for (let i = 0; i < numCodewords; i++)
+          {
+          codewordsInts[i] = codewordBytes[i] & 0xFF
+          }
+
+      try {
+          this.rsDecoder.decode(codewordsInts, codewordBytes.length - numDataCodewords);
+          }
+      catch (ignored/*: ReedSolomonException*/)
+          {
+          throw new ChecksumException();
+          }
+
+          // Copy back into array of bytes -- only need to worry about the bytes that were data
     // We don't care about errors in the error-correction codewords
     for (let i = 0; i < numDataCodewords; i++) {
       codewordBytes[i] = /*(byte) */codewordsInts[i];

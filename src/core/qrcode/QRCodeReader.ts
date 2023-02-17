@@ -145,6 +145,7 @@ export default class QRCodeReader implements Reader {
 
     const matrixWidth = Math.round((right - left + 1) / moduleSize);
     const matrixHeight = Math.round((bottom - top + 1) / moduleSize);
+
     if (matrixWidth <= 0 || matrixHeight <= 0) {
       throw new NotFoundException();
     }
